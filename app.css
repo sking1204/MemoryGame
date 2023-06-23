@@ -1,0 +1,85 @@
+/* remove basic styling */
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+}
+
+/* adding flex to the body to flex everything in a column 
+*/
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background: linear-gradient(45deg, rgba(249,136,244,1) 0%, rgba(255,188,85,1) 54%, rgba(249,136,244,1) 100%);
+}
+
+
+/* We have 6 images so we need a 3 x 4 grid
+since the card is appended to the section this is where we will put the grid */
+
+section{
+    display: grid;
+    grid-template-columns: repeat(4,8rem);
+    grid-template-rows: repeat(3,8rem);
+    grid-gap:4rem;
+    position: absolute;
+    perspective:800px;
+   
+    
+}
+   
+ h1{
+    position:absolute;
+    top:10px;
+    margin:5px;
+    
+ }  
+  
+   
+    
+
+
+/* Now we want the front and back of the card to fill all of the space in the grid
+adding pointer-events none to front and back of card so that it is unclikable */
+
+ .front,.back{
+    width:100%;
+    height:100%;
+    position:absolute;
+    pointer-events:none;
+    border-radius:10px;
+}
+
+
+
+
+/* using transform-style preserve-3d to get the flip effect along with setting the perspective to the section
+and add some kind of transition */
+.card{
+    position:relative;
+    transform-style:preserve-3d;     
+    /* transition: all 2s cubic-bezier(0.175,0.885,0.32,1.275); */
+    transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow:rgba(0,0,0,0.2) 0px 10px 10px; 
+    
+    
+   
+    
+    
+    
+}
+
+/* adding toggle class We will rotate on y axis 180 deg . We will trigger this with the event listener created in JS */
+
+.toggleCard{
+    transform:rotateY(-180deg);
+}
+
+.back{
+    background:#eeeeee;
+    backface-visibility: hidden;
+}
